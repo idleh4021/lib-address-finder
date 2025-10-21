@@ -13,7 +13,7 @@ namespace example_core
 {
     public partial class frm_finder : Form
     {
-        const string api_key = " \tdevU01TX0FVVEgyMDI1MTAyMTA4NDQwMjExNjM0NjI=";
+        const string api_key = "your_api_key";
         Address_Finder.Address_Finder address_finder;
         public juso? Selected_Address = null;
         public frm_finder()
