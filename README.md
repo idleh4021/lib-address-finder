@@ -40,6 +40,8 @@ WinForm 등 .NET 기반 프로젝트에서 간단하게 주소 검색 기능을 
 | 🧭 **검색 결과 바인딩** | 검색 결과(`List<juso>`)를 DataGridView 등에 바로 표시할 수 있습니다. | `dataGridView1.DataSource = list;` |
 | 🏷️ **선택된 주소 반환** | DataGridView 등에서 선택한 주소를 모델로 가져옵니다. | `juso sel = (juso)dataGridView1.CurrentRow.DataBoundItem;` |
 | ⚙️ **간단한 초기화** | API Key만 등록하면 바로 사용 가능합니다. | `var finder = new Address_Finder.Address_Finder("your_api_key");` |
+| 🗃️ **DataTable로 주소 검색** | 검색 결과를 `DataTable`로 바로 받아서 DataGridView 등에 바인딩할 수 있습니다. | `DataTable dt = finder.GetAddressToDataTable("서울시 강남구");` |
+| 🗂️ **DataTable로 페이지 이동** | 현재 페이지를 포함하여 검색 결과를 `DataTable`로 반환합니다. | `DataTable dt = finder.MovePageToDataTable(2);` |
 
 
 > ⚡ **자세한 사용 방법과 UI 예제는 [`example_core`](./example_core) 프로젝트를 참고하세요.**
