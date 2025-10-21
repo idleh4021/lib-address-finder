@@ -37,7 +37,7 @@ namespace Address_Finder.Model
         /// <summary>
         /// 오류 코드 (0: 정상)
         /// </summary>
-        public int errorCode { get; set; }
+        public string errorCode { get; set; }
 
         /// <summary>
         /// 오류 메시지

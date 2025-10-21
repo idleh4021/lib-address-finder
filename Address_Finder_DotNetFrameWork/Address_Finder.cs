@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -40,6 +41,10 @@ namespace Address_Finder_DotNetFrameWork
             //string url = base_url+$"confmKey={api_key}&currentPage=1&countPerPage={count_per_page}&keyword={keyword}&resultType=json";
             var response = GetData(keyword);
             if (response == null) { return list; }
+            if (response.results.common.errorCode != "0")
+            {
+                throw new Exception(response.results.common.errorMessage);
+            }
             list = response.results.Juso;
             int total_page = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(response.results.common.totalCount) / count_per_page));
             _total_page = total_page;
@@ -54,6 +59,10 @@ namespace Address_Finder_DotNetFrameWork
             //string url = base_url + $"confmKey={api_key}&currentPage={page}&countPerPage={count_per_page}&keyword={KEYWORD}&resultType=json";
             var response = GetData(_keyword, page);
             if (response == null) { return list; }
+            if (response.results.common.errorCode != "0")
+            {
+                throw new Exception(response.results.common.errorMessage);
+            }
             list = response.results.Juso;
             return list;
         }
@@ -75,6 +84,10 @@ namespace Address_Finder_DotNetFrameWork
                     json = response.Content.ReadAsStringAsync().Result;
                 }
                 result = JsonConvert.DeserializeObject<ResponseModel>(json);
+                if (result.results.common.errorCode != "0")
+                {
+                    return result;
+                }
                 _last_response = result;
                 // CURRENT_PAGE = page;
                 _keyword = keyword;
@@ -83,9 +96,28 @@ namespace Address_Finder_DotNetFrameWork
             catch (Exception ex)
             {
                 result = new ResponseModel();
-                result.results.common.errorCode = -1;
+                result.results.common.errorCode = "-1";
                 result.results.common.errorMessage = ex.Message;
             }
+            return result;
+        }
+
+
+        public DataTable GetAddressToDataTable(string keyword)
+        {
+            DataTable result = new DataTable();
+            var response = GetAddress(keyword);
+            string json = JsonConvert.SerializeObject(response);
+            result = (DataTable)JsonConvert.DeserializeObject(json, typeof(DataTable));
+            return result;
+        }
+
+        public DataTable MovePageToDataTable(int page)
+        {
+            DataTable result = new DataTable();
+            var response = MovePage(page);
+            string json = JsonConvert.SerializeObject(response);
+            result = (DataTable)JsonConvert.DeserializeObject(json, typeof(DataTable));
             return result;
         }
 

@@ -13,7 +13,7 @@ namespace example_core
 {
     public partial class frm_finder : Form
     {
-        const string api_key = "your_api_key";
+        const string api_key = "your apikey";
         Address_Finder.Address_Finder address_finder;
         public juso? Selected_Address = null;
         public frm_finder()
@@ -41,7 +41,7 @@ namespace example_core
             }
             catch (Exception ex)
             {
-                MessageBox.Show("데이터를 찾을 수 없거나, 상세주소를 입력해주시기 바랍니다.");
+                MessageBox.Show("오류가 발생했습니다.\n"+ex.Message);
 
             }
         }
