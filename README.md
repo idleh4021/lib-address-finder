@@ -19,7 +19,7 @@ WinForm 등 .NET 기반 프로젝트에서 간단하게 주소 검색 기능을 
 
 1. **API Key 발급**
    - [행안부 주소검색 API 페이지](https://business.juso.go.kr/addrlink/openApi/apiReqst.do) 접속  
-   - 회원가입 후 **검색용 API Key** 발급받기
+   - **검색용 API Key** 발급받기
 
 2. **라이브러리 추가**
    - `Address_Finder.dll`을 프로젝트에 참조 추가  
