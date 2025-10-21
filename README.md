@@ -1,6 +1,6 @@
 # 🏠 Address Finder
 
-**행정안전부(행안부)**에서 제공하는 **주소검색 Open API**를 활용한  
+**행정안전부**에서 제공하는 **주소검색 Open API**를 활용한  
 간편한 **C#용 주소검색 라이브러리**입니다.
 
 WinForm 등 .NET 기반 프로젝트에서 간단하게 주소 검색 기능을 구현할 수 있습니다.
@@ -25,6 +25,9 @@ WinForm 등 .NET 기반 프로젝트에서 간단하게 주소 검색 기능을 
    - `Address_Finder.dll`을 프로젝트에 참조 추가  
      (또는 NuGet 배포 시 `Install-Package Address_Finder` 형태로 설치 예정)
 
+3. **필수 패키지**: Newtonsoft.Json (JSON 파싱용)
+   ```powershell
+   Install-Package Newtonsoft.Json
 ---
 
 
